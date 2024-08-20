@@ -1,0 +1,9 @@
+version: '3'
+services:
+  app_nu:
+    image: 'app_nu'
+    build: .
+    stdin_open: true
+    tty: true
+    environment:
+      - PYTHONUNBUFFERED=1
