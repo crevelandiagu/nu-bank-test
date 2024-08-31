@@ -1,0 +1,43 @@
+Input #1
+[{"operation":"buy", "unit-cost":10, "quantity": 10000}, {"operation":"sell", "unit-cost":20, "quantity": 11000}]
+
+Output #1
+[{"tax":0},
+{"error":"Can't sell more stocks than you have"}]
+
+Input #2
+[{"operation":"buy", "unit-cost": 10, "quantity": 10000},  {"operation":"sell", "unit-cost":20, "quantity": 11000},  {"operation":"sell", "unit-cost": 20, "quantity": 5000}]
+
+Output #2
+[{"tax":0},
+{"error":"Can't sell more stocks than you have"},
+{"tax":10_000}]
+
+
+New
+
+After validating the stock quantity, we will check if the investor tries to perform
+ multiple invalid actions consecutively,
+if such an error happens we block the following operations, even if those are valid.
+
+try 3 times and error
+
+[{"operation":"buy", "unit-cost": 5000.00, "quantity": 10},
+{"operation":"sell", "unit-cost": 4000.00, "quantity": 5},
+{"operation":"buy", "unit-cost": 15000.00, "quantity": 5},
+{"operation":"sell", "unit-cost": 4000.00, "quantity": 2},  #1
+{"operation":"sell", "unit-cost": 23000.00, "quantity": 2}, #2
+{"operation":"sell", "unit-cost": 20000.00, "quantity": 1}, # 3 break
+{"operation":"sell", "unit-cost": 12000.00, "quantity": 10},
+{"operation":"sell", "unit-cost": 15000.00, "quantity": 3}]
+
+{"error":"to many error "}
+
+Input #1
+[{"operation":"sell", "unit-cost":20, "quantity": 10000}, {"operation":"sell", "unit-cost":20, "quantity": 10000}, {"operation":"sell", "unit-cost":20, "quantity": 10000}, {"operation":"buy", "unit-cost":10, "quantity": 10000}]
+
+Output #1
+[{"error":"Can't sell more stocks than you have"},
+{"error":"Can't sell more stocks than you have"},
+{"error":"Can't sell more stocks than you have"},
+{"error":"Your account is blocked"}]
