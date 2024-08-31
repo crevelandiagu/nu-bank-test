@@ -18,6 +18,6 @@ def get_capital_gains(transaction):
         data_tansaction.update(info_transaction)
         tmp_dict[f'transaction_{number_transaction}'] = data_tansaction
 
-    result = [{"tax": value["tax"]} for value in tmp_dict.values()]
+    result = [{"tax": value["tax"]} if value['error'] == '' else {"error": value["error"]} for value in tmp_dict.values()]
     return result
 

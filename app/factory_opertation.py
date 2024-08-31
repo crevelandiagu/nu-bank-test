@@ -64,8 +64,14 @@ class SellOperationStock:
         Returns:
             dictionary with all information about the operation like {"tax":0, ...}
         """
+
         stock_process = self.calculator_stock_process
+
         stock_process.track_operation(operation_type='sell', operation_data=operation_data)
+
+        if stock_process.error_count:
+            return stock_process.get_values_taxes(tax_profit=0)
+
         if stock_process.sell_price_lower(operation_data=operation_data):
             return stock_process.get_values_taxes(tax_profit=0)
 

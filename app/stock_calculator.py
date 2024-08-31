@@ -1,3 +1,5 @@
+from symbol import pass_stmt
+
 from .constant import DECIMAL_PRECISION
 
 
@@ -15,6 +17,7 @@ class StockProcessCalculus:
         self.total_losses = 0
         self.list_cost_stock = []
         self.list_weighted_average = 0
+        self.error_count = 0
 
     def get_values(self) -> dict:
         """
@@ -28,6 +31,7 @@ class StockProcessCalculus:
             'total_profit': self.total_profit,
             'total_losses': self.total_losses,
             'list_weighted_average': self.list_weighted_average,
+            'error': self.error_msj
         }
 
     def get_profit(self, data: dict) -> float:
@@ -153,7 +157,31 @@ class StockProcessCalculus:
             return self.get_values()
 
         elif operation_type == "sell":
+            stock_sell = operation_data.get("quantity")
+            if self.error_count >= 3:
+                self.error_msj = "Your account is blocked"
+                self.error_count += 1
+                # ALERT
+                return self.get_values()
+            if (self.total_stock - stock_sell) < 0:
+                self.error_msj = "Can't sell more stocks than you have"
+                self.error_count += 1
+                return self.get_values()
+
             self.total_stock -= quantity
             self.total_cost += self.total_amount_transaction(quantity, price)
 
         return self.get_values()
+
+
+class ValidationTransaction(StockProcessCalculus):
+
+    def __init__(self):
+        self.tax_operation = 0
+
+    def track_operation(self):
+        pass
+
+    def validate_amount_stok(self):
+        # busines logic
+        pass

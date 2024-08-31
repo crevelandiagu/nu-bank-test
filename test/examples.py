@@ -69,6 +69,13 @@ EXAMPLE_9 = '''
 {"operation":"sell", "unit-cost": 15000.00, "quantity": 3}]
 '''
 
+EXAMPLE_10 = '''
+[{"operation":"buy", "unit-cost": 10, "quantity": 10000},
+ {"operation":"sell", "unit-cost":20, "quantity": 11000},
+ {"operation":"sell", "unit-cost": 20, "quantity": 5000}]
+'''
+
+
 TEST_EXAMPLES = {
  "EXAMPLE_BASE": '[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}]',
  "EXAMPLE_BASE_ONE": '[{"operation":"buy", "unit-cost":10.00, "quantity": 10000}, {"operation":"sell", "unit-cost":20.00, "quantity": 5000}]',
@@ -80,7 +87,8 @@ TEST_EXAMPLES = {
  "EXAMPLE_6": EXAMPLE_6,
  "EXAMPLE_7": EXAMPLE_7,
  "EXAMPLE_8": EXAMPLE_8,
- "EXAMPLE_9": EXAMPLE_9
+ "EXAMPLE_9": EXAMPLE_9,
+ "EXAMPLE_10": EXAMPLE_10,
 }
 
 

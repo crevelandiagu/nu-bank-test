@@ -66,3 +66,7 @@ docker-compose run app_nu
 1. Python
 2. Docker
 
+https://github.com/LordMoMA/Hexagonal-Architecture/blob/main/internal/migrations/hex_arch_db_schema.sql
+https://github.com/bagashiz/go-pos/blob/main/internal/adapter/storage/postgres/repository/category.go
+https://github.com/yinebebt/hexagonal-architecture/blob/main/README.md
+https://github.com/lemoncode21/golang-crud-gin-gorm/blob/main/main.go#L31
